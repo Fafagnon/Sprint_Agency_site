@@ -120,8 +120,9 @@ header nav {
     width: 100%;
 }
 
+/* MODIFICATION 1 : Le bouton est supprimé du HTML, le CSS n'a plus besoin d'être modifié. */
 .cta-button-nav {
-    display: none; /* Masqué sur mobile, visible sur desktop via media query */
+    display: none; 
     background: var(--primary-color);
     color: var(--white);
     padding: 0.7rem 1.5rem;
@@ -228,7 +229,12 @@ section { padding: 80px 0; }
 
 /* Stats */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
-.stat-item h3 { font-size: 3rem; font-weight: 800; color: var(--primary-color); }
+.stat-item h3 { 
+    /* MODIFICATION 2 : Augmentation de la taille de la police */
+    font-size: 4.5rem; 
+    font-weight: 800; 
+    color: var(--secondary-color); 
+}
 .stat-item p { color: var(--text-light); font-weight: 500; }
 
 /* Services */
@@ -263,9 +269,10 @@ section { padding: 80px 0; }
 
 /* Packs */
 .packs-grid {
-    display: grid;
-    /* Grille flexible pour 1, 2, 3 ou 4 éléments par ligne */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* MODIFICATION 4 : Changement de grid à flex pour centrer le dernier élément */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     align-items: stretch; /* Assure que les cartes ont la même hauteur */
 }
@@ -279,6 +286,10 @@ section { padding: 80px 0; }
     border: 2px solid transparent;
     display: flex;
     flex-direction: column;
+    /* Définir une base de largeur pour les éléments flex */
+    flex-basis: 300px; /* Ajustez cette valeur si nécessaire */
+    flex-grow: 1;
+    max-width: 350px; /* Empêche les cartes de devenir trop larges */
 }
 
 .pack-card:hover {
@@ -347,7 +358,7 @@ section { padding: 80px 0; }
     color: var(--primary-color);
 }
 
-/* NOUVEAU: Styles pour l'offre groupée "FULL IMPACT" */
+/* Offre "FULL IMPACT" */
 .full-impact-offer {
     margin-top: 5rem;
     padding: 3rem;
@@ -464,7 +475,7 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
 #main-header.nav-open .mobile-menu-button span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
 @media (min-width: 992px) {
-    .packs-grid { grid-template-columns: repeat(3, 1fr); }
+    /* Suppression de la règle grid-template-columns pour .packs-grid */
     .cta-button-nav { display: inline-block; }
 }
 
@@ -489,6 +500,10 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
     .cta-button-nav { display: none; }
     .footer-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.8rem; }
+    .pack-card {
+        flex-basis: 100%; /* Les cartes prennent toute la largeur */
+        max-width: 400px; /* Limite la largeur sur les tablettes */
+    }
 }
 
 @media (max-width: 768px) {
@@ -501,7 +516,7 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
     .hero p { font-size: 1.1rem; }
     .btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
     .stats-grid { gap: 1rem; }
-    .stat-item h3 { font-size: 2.5rem; }
+    .stat-item h3 { font-size: 3.5rem; }
 }
 
 /* --- Animations --- */
