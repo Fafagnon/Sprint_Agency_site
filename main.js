@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // --- MODIFICATION 3 : Animation de décompte pour les statistiques ---
     const animateCounter = (element) => {
         const target = parseInt(element.dataset.target, 10);
         const suffix = element.innerText.replace(/[0-9]/g, ''); // Garde les symboles comme '+' ou '%'
@@ -58,13 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
 
-                // MODIFICATION 3 : Déclenchement de l'animation de décompte
                 const counters = entry.target.querySelectorAll('[data-target]');
                 counters.forEach(counter => {
                     animateCounter(counter);
                 });
                 
-                // On arrête d'observer l'élément pour que l'animation ne se répète pas
                 observer.unobserve(entry.target);
             }
         });
@@ -88,13 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
         
-        // 3. Remplacer par votre numéro de téléphone au format international SANS le "+" ou les "00"
-        // Par exemple, pour un numéro français +33 6 12 34 56 78, utilisez "33612345678"
-        // Pour un numéro ivoirien +225 07 12 34 56 78, utilisez "2250712345678"
-        const whatsappNumber = '22899324636'; // <--- METTEZ VOTRE NUMÉRO ICI !
+
+        const whatsappNumber = '22899324636';
 
         // 4. Formater le message pour WhatsApp
-        // Le `\n` permet de faire un saut de ligne
         const whatsappMessage = `Bonjour, je vous contacte depuis votre site.\n\n*Nom :* ${name}\n*Email :* ${email}\n\n*Message :*\n${message}`;
 
         // 5. Encoder le message pour qu'il soit compatible avec une URL

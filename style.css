@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #0A2540; /* Bleu nuit sophistiqué */
-    --secondary-color: #FDB813; /* Or/Jaune vibrant */
-    --accent-gradient: linear-gradient(90deg, #4F46E5, #8B5CF6); /* Dégradé Indigo -> Violet */
+    --primary-color: #0A2540; 
+    --secondary-color: #FDB813; 
+    --accent-gradient: linear-gradient(90deg, #4F46E5, #8B5CF6); 
     --text-dark: #1A202C;
     --text-light: #718096;
     --bg-light: #F7FAFC;
@@ -120,7 +120,6 @@ header nav {
     width: 100%;
 }
 
-/* MODIFICATION 1 : Le bouton est supprimé du HTML, le CSS n'a plus besoin d'être modifié. */
 .cta-button-nav {
     display: none; 
     background: var(--primary-color);
@@ -230,7 +229,6 @@ section { padding: 80px 0; }
 /* Stats */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
 .stat-item h3 { 
-    /* MODIFICATION 2 : Augmentation de la taille de la police */
     font-size: 4.5rem; 
     font-weight: 800; 
     color: var(--secondary-color); 
@@ -269,12 +267,11 @@ section { padding: 80px 0; }
 
 /* Packs */
 .packs-grid {
-    /* MODIFICATION 4 : Changement de grid à flex pour centrer le dernier élément */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    align-items: stretch; /* Assure que les cartes ont la même hauteur */
+    align-items: stretch; 
 }
 
 .pack-card {
@@ -286,10 +283,9 @@ section { padding: 80px 0; }
     border: 2px solid transparent;
     display: flex;
     flex-direction: column;
-    /* Définir une base de largeur pour les éléments flex */
-    flex-basis: 300px; /* Ajustez cette valeur si nécessaire */
+    flex-basis: 300px; 
     flex-grow: 1;
-    max-width: 350px; /* Empêche les cartes de devenir trop larges */
+    max-width: 350px; 
 }
 
 .pack-card:hover {
@@ -327,7 +323,7 @@ section { padding: 80px 0; }
     list-style: none;
     margin-bottom: 2rem;
     text-align: left;
-    flex-grow: 1; /* Permet à cette section de grandir et pousser le bouton vers le bas */
+    flex-grow: 1;
 }
 
 .pack-features li {
@@ -341,9 +337,9 @@ section { padding: 80px 0; }
     color: var(--secondary-color);
 }
 
-/* Styles spécifiques pour la carte Centre d'Appel */
+
 .pack-pricing-options {
-    margin-top: auto; /* Pousse cette section vers le bas */
+    margin-top: auto; 
     padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
@@ -475,7 +471,6 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
 #main-header.nav-open .mobile-menu-button span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
 @media (min-width: 992px) {
-    /* Suppression de la règle grid-template-columns pour .packs-grid */
     .cta-button-nav { display: inline-block; }
 }
 
