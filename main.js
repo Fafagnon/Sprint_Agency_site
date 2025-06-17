@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateCount = () => {
             current += increment;
             if (current < target) {
-                element.innerText = Math.ceil(current) + suffix;
+                element.innerText = suffix + Math.ceil(current) ;
                 requestAnimationFrame(updateCount);
             } else {
-                element.innerText = target + suffix; // Assurer que la valeur finale est exacte
+                element.innerText =  target + suffix; // Assurer que la valeur finale est exacte
             }
         };
 
