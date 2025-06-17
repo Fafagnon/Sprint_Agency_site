@@ -31,6 +31,37 @@ body {
     overflow-x: hidden;
 }
 
+/* 1. Rendre la police des boutons et du paragraphe du "hero" moins grasse */
+        .hero-buttons .btn {
+            font-weight: 500; /* Medium weight, moins gras que 'bold' */
+        }
+        .hero-content > p {
+            font-weight: 400; /* Poids normal */
+        }
+
+        /* 2. Mettre les chiffres des statistiques en bleu */
+        .stats .stat-item h3 {
+            color: #007bff; /* Un bleu vif et professionnel */
+        }
+
+        /* 3. Harmoniser l'espacement dans la section CTA */
+        .cta-section h2, .cta-section p {
+            margin-bottom: 1.5rem; /* Applique un espacement vertical cohérent */
+        }
+.logo {
+    display: flex;
+    align-items: center;
+    max-width: 150px; /* limite la largeur du lien lui-même */
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
