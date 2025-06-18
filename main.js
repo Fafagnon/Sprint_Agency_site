@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateCount = () => {
             current += increment;
             if (current < target) {
-                element.innerText = suffix + Math.ceil(current) ;
+                element.innerText = Math.ceil(current) + suffix ;
                 requestAnimationFrame(updateCount);
             } else {
                 element.innerText =  target + suffix; // Assurer que la valeur finale est exacte
