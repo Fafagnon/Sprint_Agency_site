@@ -223,6 +223,64 @@ header nav {
     overflow: hidden;
 }
 
+/* MODIFICATION 1 : Animation Machine à Écrire (Hero) - CORRIGÉE */
+.typewriter {
+    /* Utilise une variable pour le nombre de caractères pour synchroniser l'animation */
+    --char-count: 85;
+    position: relative;
+    width: max-content; /* Permet au conteneur de prendre la largeur totale du texte */
+    max-width: 100%; /* S'assure qu'il ne dépasse pas son parent sur petits écrans */
+}
+
+.typewriter::before,
+.typewriter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* Le "rideau" qui se retire pour révéler le texte */
+.typewriter::before {
+    background: var(--primary-color);
+    animation: typewriter 4s steps(var(--char-count)) 1s forwards;
+}
+
+/* Le curseur qui clignote */
+.typewriter::after {
+    width: 0.125em;
+    background: var(--secondary-color);
+    animation: 
+        typewriter 4s steps(var(--char-count)) 1s forwards,
+        blink 750ms steps(var(--char-count)) infinite;
+}
+
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+/* Adaptation sur mobile */
+@media (max-width: 768px) {
+    .typewriter {
+        width: auto; /* Fallback pour mobile */
+        white-space: normal; /* Permet le retour à la ligne */
+    }
+    .typewriter::before, .typewriter::after {
+        display: none; /* Désactive l'animation sur mobile */
+    }
+}
+
+
 .hero::before { /* Effet de grille subtil */
     content: "";
     position: absolute;
@@ -295,6 +353,65 @@ section { padding: 80px 0; }
 }
 .service-card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
 .service-card p { color: var(--text-light); }
+
+/* MODIFICATION 2 & 3 : Section Partenaires et CTA */
+.partners {
+    background-color: var(--white);
+    padding: 80px 0;
+}
+
+.partners-scroller {
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+.partners-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* Espace entre les logos */
+    width: calc(250px * 12); /* Largeur d'un logo + gap * nombre total de logos */
+    animation: scroll 40s linear infinite;
+}
+
+.partners-track:hover {
+    animation-play-state: paused; /* Met en pause le défilement au survol */
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Défile jusqu'au début de la liste dupliquée */
+}
+
+.partners-track img {
+    height: 60px; /* Hauteur uniforme pour tous les logos */
+    width: auto;
+    max-width: 200px;
+    /* filter: grayscale(100%);  Logos en noir et blanc par défaut */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partners-track img:hover {
+    filter: grayscale(0%); /* Couleur originale au survol */
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.partners-cta {
+    text-align: center;
+    margin-top: 4rem; /* Espace au-dessus du bouton */
+}
+
+/* Ajout d'une barre décorative sous les titres de section */
+.section-title .title-underline {
+    width: 80px;
+    height: 4px;
+    background: #3498db;
+    margin: 1rem auto 1.5rem; /* Espace au-dessus et en dessous */
+    border-radius: 2px;
+}
 
 /* Packs */
 .packs-grid {
