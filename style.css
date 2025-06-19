@@ -249,6 +249,7 @@ header nav {
 }
 
 /* Le curseur qui clignote */
+/*
 .typewriter::after {
     width: 0.125em;
     background: var(--secondary-color);
@@ -256,6 +257,7 @@ header nav {
         typewriter 4s steps(var(--char-count)) 1s forwards,
         blink 750ms steps(var(--char-count)) infinite;
 }
+*/
 
 @keyframes typewriter {
     to {
@@ -314,6 +316,36 @@ section { padding: 80px 0; }
 .services { background: var(--white); }
 .packs { background: var(--bg-light); }
 .cta-section { background: var(--primary-color); color: var(--white); text-align: center; }
+
+/* --- Animation "Vague de mots" pour le titre de la section CTA --- */
+#cta-title {
+    /* Prépare le conteneur pour l'animation des mots */
+    display: flex;
+    flex-wrap: wrap; /* Permet le retour à la ligne des mots */
+    justify-content: center;
+    /* Cache le débordement des mots pendant l'animation */
+    overflow: hidden; 
+    /* Un peu d'espace en bas pour que le soulèvement soit visible */
+    padding-bottom: 0.2em; 
+    font-size: 4.5cap;
+}
+
+/* Style de chaque mot (span) */
+#cta-title span {
+    display: inline-block;
+    opacity: 0;
+    /* Les mots commencent légèrement plus bas */
+    transform: translateY(100%); 
+    transition: opacity 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000), 
+                transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+/* Classe ajoutée par JS lorsque la section est visible */
+#cta-title.animate span {
+    opacity: 1;
+    /* Les mots retournent à leur position d'origine */
+    transform: translateY(0);
+}
 
 /* Stats */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }

@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('nav-open');
     });
 
-    // Fermer le menu en cliquant sur un lien
     navLinks.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             header.classList.remove('nav-open');
@@ -24,79 +23,97 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
-    
+
+    // --- Animation de décompte pour les statistiques ---
     const animateCounter = (element) => {
         const target = parseInt(element.dataset.target, 10);
-        const suffix = element.innerText.replace(/[0-9]/g, ''); // Garde les symboles comme '+' ou '%'
+        const suffix = element.innerText.replace(/[0-9]/g, '');
         let current = 0;
-        const duration = 2000; // 2 secondes
-        const increment = target / (duration / 16); // Calculer l'incrément pour une animation fluide
+        const duration = 2000;
+        const increment = target / (duration / 16);
 
         const updateCount = () => {
             current += increment;
             if (current < target) {
-                element.innerText = Math.ceil(current) + suffix ;
+                element.innerText = Math.ceil(current) + suffix;
                 requestAnimationFrame(updateCount);
             } else {
-                element.innerText =  target + suffix; // Assurer que la valeur finale est exacte
+                element.innerText = target + suffix;
             }
         };
-
         requestAnimationFrame(updateCount);
     };
 
+    // --- MODIFIÉ : Préparation du titre CTA pour l'animation par MOTS ---
+    const ctaTitle = document.getElementById('cta-title');
+    if (ctaTitle) {
+        const text = ctaTitle.textContent;
+        const words = text.split(' '); // On découpe par espace pour avoir les mots
+        ctaTitle.innerHTML = ''; // Vide le contenu original
+        
+        words.forEach((word) => {
+            const wordSpan = document.createElement('span');
+            // On ajoute le mot et un espace insécable pour recréer la phrase
+            wordSpan.innerHTML = `${word} `; 
+            ctaTitle.appendChild(wordSpan);
+        });
+    }
 
-    // --- Animation d'Apparition au Scroll (Fade In) ---
+    // --- Animation d'Apparition au Scroll (Fade In & autres) ---
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.5, // Se déclenche quand 50% de l'élément est visible
+        rootMargin: '0px'
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Animation fade-in classique
                 entry.target.classList.add('visible');
 
-                const counters = entry.target.querySelectorAll('[data-target]');
-                counters.forEach(counter => {
-                    animateCounter(counter);
-                });
+                // Déclenchement du compteur de stats
+                if (entry.target.classList.contains('stat-item')) {
+                    const counter = entry.target.querySelector('[data-target]');
+                    if (counter) {
+                        animateCounter(counter);
+                    }
+                }
                 
+                // MODIFIÉ : Déclenchement de l'animation des mots du titre CTA
+                if (entry.target.id === 'cta-title') {
+                    entry.target.classList.add('animate');
+                    // Applique le délai progressif à chaque mot (span)
+                    const wordSpans = entry.target.querySelectorAll('span');
+                    wordSpans.forEach((span, index) => {
+                        // Un délai plus long entre les mots est plus agréable
+                        span.style.transitionDelay = `${index * 120}ms`; 
+                    });
+                }
+
+                // Arrête d'observer l'élément pour ne pas répéter l'animation
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // On observe les éléments .fade-in et la section .stats
-    document.querySelectorAll('.fade-in').forEach(el => {
+    // Observer les éléments .fade-in et le titre CTA
+    document.querySelectorAll('.fade-in, #cta-title').forEach(el => {
         observer.observe(el);
     });
-});
 
-// --- NOUVEAU : GESTION DU FORMULAIRE DE CONTACT VERS WHATSAPP ---
+    // --- Gestion du formulaire de contact vers WhatsApp ---
     const contactForm = document.getElementById('contact-form');
-
-    contactForm.addEventListener('submit', (event) => {
-        // 1. Empêcher le comportement par défaut du formulaire (qui est de recharger la page)
-        event.preventDefault();
-
-        // 2. Récupérer les données des champs du formulaire
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-
-        const whatsappNumber = '22899324636';
-
-        // 4. Formater le message pour WhatsApp
-        const whatsappMessage = `Bonjour, je vous contacte depuis votre site.\n\n*Nom :* ${name}\n*Email :* ${email}\n\n*Message :*\n${message}`;
-
-        // 5. Encoder le message pour qu'il soit compatible avec une URL
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-
-        // 6. Créer l'URL de redirection WhatsApp
-        const whatsappURL = `https://wa.me/${22899324636}?text=${encodedMessage}`;
-
-        // 7. Ouvrir WhatsApp dans un nouvel onglet
-        window.open(whatsappURL, '_blank');
-    });
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const whatsappNumber = '225XXXXXXXXXX'; // <--- N'OUBLIEZ PAS DE METTRE VOTRE NUMÉRO
+            const whatsappMessage = `Bonjour, je vous contacte depuis votre site.\n\n*Nom :* ${name}\n*Email :* ${email}\n\n*Message :*\n${message}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            window.open(whatsappURL, '_blank');
+        });
+    }
+});
