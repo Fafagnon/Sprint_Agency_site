@@ -326,8 +326,7 @@ section { padding: 80px 0; }
     /* Cache le débordement des mots pendant l'animation */
     overflow: hidden; 
     /* Un peu d'espace en bas pour que le soulèvement soit visible */
-    padding-bottom: 0.2em; 
-    font-size: 4.5cap;
+    padding-bottom: 0.2em;
 }
 
 /* Style de chaque mot (span) */

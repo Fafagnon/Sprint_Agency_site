@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            const whatsappNumber = '225XXXXXXXXXX'; // <--- N'OUBLIEZ PAS DE METTRE VOTRE NUMÉRO
+            const whatsappNumber = '22890229652'; // <--- N'OUBLIEZ PAS DE METTRE VOTRE NUMÉRO
             const whatsappMessage = `Bonjour, je vous contacte depuis votre site.\n\n*Nom :* ${name}\n*Email :* ${email}\n\n*Message :*\n${message}`;
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            const whatsappURL = `https://wa.me/${22890229652}?text=${encodedMessage}`;
             window.open(whatsappURL, '_blank');
         });
     }
