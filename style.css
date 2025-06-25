@@ -630,6 +630,11 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
 }
+
+.footer-about .logo {
+    white-space: nowrap;
+}
+
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255, 255, 255, 0.6); }
 .contact-form input:focus, .contact-form textarea:focus {
     outline: none;
