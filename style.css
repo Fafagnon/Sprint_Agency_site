@@ -1,12 +1,14 @@
 :root {
-    --primary-color: #0A2540; 
-    --secondary-color: #FDB813; 
-    --accent-gradient: linear-gradient(90deg, #4F46E5, #8B5CF6); 
-    --text-dark: #1A202C;
-    --text-light: #718096;
-    --bg-light: #F7FAFC;
+    --primary-color: #1A1D21; 
+    --accent-color: #00F0C8;  
+    --secondary-gray: #808080;
+    --bg-light: #F4F6F8;
     --white: #FFFFFF;
-    --border-color: #E2E8F0;
+    --border-color: #E1E4E8;
+
+    --text-dark: var(--primary-color);
+    --text-light: var(--secondary-gray);
+
 
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -39,9 +41,9 @@ body {
             font-weight: 400; /* Poids normal */
         }
 
-        /* 2. Mettre les chiffres des statistiques en bleu */
+        /* 2. Mettre les chiffres des statistiques en vert */
         .stats .stat-item h3 {
-            color: #007bff; /* Un bleu vif et professionnel */
+            color: #00F0C8; /* Un bleu vif et professionnel */
         }
 
         /* 3. Harmoniser l'espacement dans la section CTA */
@@ -145,7 +147,7 @@ header nav {
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 .nav-links a:hover::after {
     width: 100%;
@@ -183,22 +185,22 @@ header nav {
 }
 
 .btn-primary {
-    background: var(--accent-gradient);
-    color: var(--white);
-    box-shadow: var(--shadow-md);
+    background: var(--accent-color);
+    color: var(--primary-color);
+    box-shadow: 0 4px 14px 0 rgba(0, 240, 200, 0.39);
 }
 .btn-primary:hover {
+    transform: 0 6px 20px 0 rgba(0, 240, 200, 0.45);
     transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--white);
-    border: 2px solid var(--white);
+    border: 2px solid var(--accent-color);
 }
 .btn-secondary:hover {
-    background: var(--white);
+    background: var(--accent-color);
     color: var(--primary-color);
 }
 
@@ -209,7 +211,7 @@ header nav {
     justify-content: center;
 }
 .btn-tertiary:hover {
-    background: var(--secondary-color);
+    background: var(--accent-color);
     color: var(--primary-color);
 }
 
@@ -372,8 +374,8 @@ section { padding: 80px 0; }
 }
 .service-icon {
     font-size: 2.5rem;
-    color: var(--white);
-    background: var(--accent-gradient);
+    color: var(--primary-color);
+    background: var(--accent-color);
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -439,7 +441,7 @@ section { padding: 80px 0; }
 .section-title .title-underline {
     width: 80px;
     height: 4px;
-    background: #3498db;
+    background: #00F0C8;
     margin: 1rem auto 1.5rem; /* Espace au-dessus et en dessous */
     border-radius: 2px;
 }
@@ -474,7 +476,7 @@ section { padding: 80px 0; }
 .pack-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--secondary-color);
+    border-color: var(--accent-color);
 }
 
 .pack-title {
@@ -518,7 +520,7 @@ section { padding: 80px 0; }
 }
 
 .pack-features i {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 
@@ -543,8 +545,9 @@ section { padding: 80px 0; }
     margin-top: 5rem;
     padding: 3rem;
     border-radius: 20px;
-    background: var(--accent-gradient);
+    background: var(--primary-color);
     color: var(--white);
+    border: 2px solid var(--accent-color);
     text-align: center;
     box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
@@ -584,7 +587,7 @@ section { padding: 80px 0; }
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--secondary-color);
+    background: var(--accent-color);
     color: var(--primary-color);
     padding: 0.5rem 1.2rem;
     border-radius: 50px;
@@ -613,7 +616,7 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
     text-decoration: none;
     transition: all 0.3s ease;
 }
-.social-links a:hover { background: var(--secondary-color); transform: scale(1.1); }
+.social-links a:hover { background: var(--accent-color); transform: scale(1.1); }
 .footer-form-container h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 0.5rem; }
 .footer-form-container p { margin-bottom: 2rem; }
 .form-group { margin-bottom: 1.5rem; }
@@ -630,8 +633,8 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255, 255, 255, 0.6); }
 .contact-form input:focus, .contact-form textarea:focus {
     outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(253, 184, 19, 0.3);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 240, 200, 0.3);
 }
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
