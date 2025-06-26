@@ -1,7 +1,7 @@
 :root {
     --primary-color: #1A1D21; 
-    --accent-color: #00F0C8;  
-    --secondary-gray: #808080;
+    --accent-color: #00e3d2ff;  
+    --secondary-gray: #666666ff;
     --bg-light: #F4F6F8;
     --white: #FFFFFF;
     --border-color: #E1E4E8;
@@ -33,27 +33,24 @@ body {
     overflow-x: hidden;
 }
 
-/* 1. Rendre la police des boutons et du paragraphe du "hero" moins grasse */
         .hero-buttons .btn {
-            font-weight: 500; /* Medium weight, moins gras que 'bold' */
+            font-weight: 500;
         }
         .hero-content > p {
-            font-weight: 400; /* Poids normal */
+            font-weight: 400;
         }
 
-        /* 2. Mettre les chiffres des statistiques en vert */
         .stats .stat-item h3 {
-            color: #00F0C8; /* Un bleu vif et professionnel */
+            color: #00F0C8; 
         }
 
-        /* 3. Harmoniser l'espacement dans la section CTA */
         .cta-section h2, .cta-section p {
-            margin-bottom: 1.5rem; /* Applique un espacement vertical cohérent */
+            margin-bottom: 1.5rem;
         }
 .logo {
     display: flex;
     align-items: center;
-    max-width: 150px; /* limite la largeur du lien lui-même */
+    max-width: 150px;
 }
 
 .logo img {
@@ -441,7 +438,7 @@ section { padding: 80px 0; }
 .section-title .title-underline {
     width: 80px;
     height: 4px;
-    background: #00F0C8;
+    background: var(--primary-color);
     margin: 1rem auto 1.5rem; /* Espace au-dessus et en dessous */
     border-radius: 2px;
 }
