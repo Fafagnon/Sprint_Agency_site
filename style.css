@@ -713,3 +713,80 @@ footer { background: var(--primary-color); color: rgba(255, 255, 255, 0.8); padd
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* --- Bandeau Promotionnel Université --- */
+.promo-banner {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1.2rem 0; /* Augmentation du padding pour plus d'espace */
+    position: sticky;
+    top: 80px;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden; /* Empêche l'animation de déborder */
+}
+
+.promo-banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.promo-text {
+    font-weight: 500;
+    font-size: 1.1rem; /* Augmentation de la taille du texte */
+}
+
+/* --- Badge "Nouveau" animé --- */
+.promo-badge {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem; /* Badge plus grand */
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem; /* Texte du badge plus grand */
+    margin-right: 1rem;
+    display: inline-block; /* Nécessaire pour que transform fonctionne */
+    
+    /* On lie l'animation ici */
+    animation: bounce-badge 3s ease-in-out infinite;
+}
+
+/* Définition de l'animation du badge */
+@keyframes bounce-badge {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(0.9);
+    }
+    30% {
+        transform: scale(1.15) rotate(5deg);
+    }
+    50% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+
+/* --- Bouton "Voir le catalogue" --- */
+.promo-btn {
+    /* Style spécifique pour le bouton du bandeau */
+    padding: 0.8rem 2rem !important; /* Bouton plus grand */
+    font-size: 1rem !important; /* Texte du bouton plus grand */
+    font-weight: 700 !important;
+    white-space: nowrap;
+}
+
+/* Responsive pour le bandeau */
+@media (max-width: 768px) {
+    .promo-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .promo-text {
+        margin-bottom: 1rem;
+    }
+}
